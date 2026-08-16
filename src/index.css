@@ -1,7 +1,13 @@
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 body {
   margin: 0;
+  background: #f4f0ff;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
 }
