@@ -1,6 +1,7 @@
 import { topics } from '../data/topics'
 import type { GameSettings } from '../types'
 import { useMemoryGame } from '../hooks/useMemoryGame'
+import { useGridLayout } from '../hooks/useGridLayout'
 import { Card } from '../components/Card'
 import './GameScreen.css'
 
@@ -12,6 +13,7 @@ interface GameScreenProps {
 export function GameScreen({ settings, onExit }: GameScreenProps) {
   const topic = topics.find((t) => t.id === settings.topicId) ?? topics[0]
   const { deck, status, flipCard, restart } = useMemoryGame(topic, settings.cardCount)
+  const { containerRef, cols, rows } = useGridLayout(deck.length)
 
   return (
     <div className="game">
@@ -22,7 +24,14 @@ export function GameScreen({ settings, onExit }: GameScreenProps) {
         <h1 className="game-title">{topic.label}</h1>
       </header>
 
-      <div className="card-grid">
+      <div
+        ref={containerRef}
+        className="card-grid"
+        style={{
+          gridTemplateColumns: `repeat(${cols}, 1fr)`,
+          gridTemplateRows: `repeat(${rows}, 1fr)`,
+        }}
+      >
         {deck.map((card) => (
           <Card key={card.cardId} card={card} disabled={status === 'won'} onFlip={flipCard} />
         ))}

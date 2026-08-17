@@ -1,17 +1,22 @@
 .game {
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   box-sizing: border-box;
-  padding: 1.5rem;
+  padding: 1rem;
   max-width: 800px;
   margin: 0 auto;
   font-family: system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .game-header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .header-button {
@@ -35,9 +40,10 @@
 }
 
 .card-grid {
+  flex: 1;
+  min-height: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1rem;
+  gap: clamp(0.4rem, 2vw, 1rem);
 }
 
 .win-overlay {
