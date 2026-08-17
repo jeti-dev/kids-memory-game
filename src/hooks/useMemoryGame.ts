@@ -13,7 +13,7 @@ export interface DeckCard {
 }
 
 const MATCH_DELAY_MS = 700
-const MISMATCH_DELAY_MS = 3100
+const MISMATCH_DELAY_MS = 2100
 
 function buildDeck(topic: Topic, cardCount: number): DeckCard[] {
   const pairsNeeded = cardCount / 2
